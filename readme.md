@@ -1,6 +1,6 @@
-        CryptoDbSS / Ethereum bridge integration.
+## CryptoDbSS / Ethereum bridge integration.
 
-        integrates a Ethereum based Blockchain to CryptoDbSS based one, reading  the smart contract bridge events and then the equivalen founds are transfer to CryptoDBSS 
+integrates a Ethereum based Blockchain to CryptoDbSS based one, reading  the smart contract bridge events and then the equivalent founds are transfer to CryptoDBSS 
 
 Dependencies: 
 
@@ -80,6 +80,16 @@ run
                 ./bridge_interface_http
 
                 default access : http://0.0.0.0:25025
+
+# Get more Info And Updates
+
+  </br>
+<p align="center">Follow the blog <a href="https://cryptodbss.blogspot.com" > cryptodbss.blogspot.com </a> </p>
+
+<p align="center">questions, suggestions or contact : Steevenjavier@gmail.com
+</br></br>
+ Copyright (C) 2025 Steeven J Salazar.
+</p>
 
 
 
