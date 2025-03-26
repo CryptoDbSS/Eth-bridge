@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactuar con un contrato inteligente utilizando MetaMask y web3.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>Bridge integration with ETH and cryptodb256ss using MetaMask and web3.js</h1>
+  <p>Address</p>
+  <input type="text" id="address" name="fname">
+
+  <p>Value</p>
+  <input type="text" id="qtty" name="fname">
+
+  <button onclick="conectarMetaMask()">Buy </button>
+  <button onclick="sendTokensToContract()">tokentest </button>
+
+  <script>
+
+     const contractAddress = '0x2f5C2Ea1Fc647aeC0253414A1Fcd283047eBA539';
+     const tokenAddress = '0x008D807fEf6c8D173EBaf60c4C8b366f49f5d0c1'; 
+     contractABI = '0'
+     tokenABI = '0'
+
+      async function onPageLoad() {
+        const response = await fetch('src/buydw.json');
+        const responseData = await response.json();
+        contractABI = responseData.abi;
+
+        const tokenabijson = await fetch('src/IERC20.json');
+        const tokenabijsonData = await tokenabijson.json();
+        tokenABI = tokenabijsonData.abi;
+      }
+
+    // Asignar la función onPageLoad a la propiedad onload del objeto window
+    window.onload = onPageLoad;
+
+    // Conexión a MetaMask y interacción con el contrato
+    async function conectarMetaMask() {
+
+      await window.ethereum.enable();
+      const web3 = new Web3(window.ethereum);
+      
+      // Cargar el archivo JSON del ABI del contrato
+
+      const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+      // Dirección del usuario y string proporcionado
+
+      await ethereum.request({ method: 'eth_requestAccounts' });
+      const accounts = await ethereum.request({ method: 'eth_accounts' });
+      const userAddress = accounts[0];
+      const address = document.getElementById("address").value 
+      const qtty = document.getElementById("qtty").value 
+      const transaction = await contract.methods.buy("0x"+address).send({
+        from: userAddress,
+        value: web3.utils.toWei(qtty, 'wei')
+      });
+
+      console.log('Transacción enviada:', transaction.transactionHash);
+    }
+    
+    async function tokentest() {
+
+      if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+        await web3.currentProvider.enable();
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+        const accounts = await web3.eth.getAccounts();
+        const userAddress = accounts[0];
+        const address = document.getElementById("address").value 
+        const qtty = document.getElementById("qtty").value 
+        const tx = await contract.methods.tokenbuy("0x"+address, qtty).send({ from: userAddress });
+        console.log('Transacción exitosa:', tx);
+      } else {
+        console.log('MetaMask no está instalado.');
+      }
+    }
+
+    async function sendTokensToContract() {
+      try {
+
+        await window.ethereum.enable();
+        const web3 = new Web3(window.ethereum);
+
+        const accounts = await web3.eth.getAccounts();
+        const userAddress = accounts[0];
+
+        const contractInstance = new web3.eth.Contract(contractABI, contractAddress);
+        const tokenInstance = new web3.eth.Contract(tokenABI, tokenAddress);
+        
+        const contractFunctions = Object.keys(tokenInstance.methods);
+        console.log(contractFunctions);
+
+        const address = document.getElementById("address").value 
+        const qtty = document.getElementById("qtty").value  
+
+        const approval = await tokenInstance.methods.approve(contractAddress, qtty).send({ from: userAddress });
+        if (!approval) {
+          console.error('Error al aprobar la transferencia de tokens.');
+          return;
+        }
+        
+        // Realizar la transferencia de tokens desde la billetera del usuario al contrato
+        const receipt = await contractInstance.methods.tokenbuy("0x"+address, qtty).send({ from: userAddress });
+
+        console.log('Transacción exitosa. Hash de la transacción:', receipt.transactionHash);
+        } catch (error) {
+        console.error('Error al enviar los tokens al contrato:', error);
+      }
+    }
+  
+  </script>
+</body>
+</html>

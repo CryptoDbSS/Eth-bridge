@@ -1,0 +1,230 @@
+html, body {
+    height: 100%;
+    border-bottom-color: red;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: #cbd3db;
+    background-color: #0f0e0e;
+
+  }
+
+  header {
+    /* Estilos del header */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(0);
+    transition: backdrop-filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  .buttonRoud {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    color: #59c0fcb0;
+    padding: 16px;
+    border: 1px solid rgb(28, 51, 80);
+    background-image: url("https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg"); 
+    background-color: #0e1518; 
+
+    background-position: right 15px center;
+    background-size: 28px; 
+    background-repeat: no-repeat;
+
+  }
+
+  span.fs-4 {
+      color: rgb(231, 230, 230);
+  }
+  
+  header.transparent {
+  
+    background-color: transparent;
+  }
+
+  header.blur {
+    backdrop-filter: blur(25px); /* Ajusta el valor de desenfoque deseado */
+    background-color: rgba(0, 0, 0, 0.62); /* Ajusta el color de fondo deseado */
+  }
+
+  section.hero {
+    height: 75vh;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .heroElements{
+
+    margin-left: 15vh;
+    margin-right: 15vh;
+    top: 15vh;
+    position: relative;
+    
+  }
+
+  .hero-h1{
+    color: #5da257;
+    margin-left: 8vh;
+    margin-right: 8vh;
+  }
+
+  section.transfer {
+    height: 45vh;
+    min-height: 45vh;
+    background-color: #0e1518;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .container {
+    display: grid;
+    align-items: center;
+    justify-content: center; 
+    align-items: center;
+  }
+
+  .inputaddress {
+    padding: 5vh;
+  }
+  
+
+  .column {
+    display: flex;
+    align-items: center;
+    float: left;
+    width: 50%;
+
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .input-element{
+    display: flex;
+    font-size: 12px; 
+    width: 750px;
+    background-color: #0f0e0e;
+    border: 1px solid rgb(0, 110, 255);
+    color: #ada878;
+    }
+
+  .input-value{
+    display: flex;
+    font-size: 12px; 
+    width: 128px;
+    background-color: #0f0e0e;
+    border: 1px solid rgb(0, 110, 255);
+    color: #ada878;
+  }
+
+  .buttoncontainer{
+    top: 7px;
+    position: relative;
+    left: 50px;
+
+  }
+
+  .nav-link {
+    color:  #5da257; 
+    transition: color 0.3s; 
+  }
+
+  .nav-link:hover {
+    color: rgb(255, 255, 255);
+    transition: color 0.3s; 
+  }
+
+  .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  /* Tus estilos personalizados aquí */
+  color: #fff !important;
+  background-color: #00000000 !important;
+}
+  
+  footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0.0;
+      
+  }
+  
+  .footer-bar {
+    height: 5px;
+    background-color: rgb(0, 0, 0); 
+  }
+
+  .footerRowAling{
+    display: flex;
+    justify-content: space-between;
+  }
+  .text_footercircle {
+    margin-left: 24px; /* Ajusta el valor según sea necesario */
+    text-align: left;
+    font-size: 14px;
+    margin-top: -6px;
+  }
+
+  .text_footer {
+    margin-left: 0px; /* Ajusta el valor según sea necesario */
+    text-align: left;
+    font-size: 10px;
+    color: rgb(193, 179, 164);
+    margin-top: 2px;
+    display: inline-block;
+    margin-right: 10px; /* Opcional: para agregar un espacio entre los elementos */
+  }
+
+  .short-input {
+  width: 50px; /* Ajusta el valor según sea necesario */
+}
+
+
+
+
+divfootercol {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:1500vh; /* Ajusta la altura del div según tus necesidades */
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
